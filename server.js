@@ -19,8 +19,11 @@ mongoose
   .catch((err)=>console.log(err,"it has an error"));
 
 const Storage = multer.diskStorage({
-       destination:'uploads'
-   })
+    destination: "uploads",
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
 
 app.get("/", (req, res) => {
     res.send("upload file");
