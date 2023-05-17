@@ -6,7 +6,6 @@ const multer = require("multer");
 const port = 8000;
 
 const ImageModel = require("./image.model");
-const { log } = require("console");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,12 +41,12 @@ app.post("/upload", (req, res) => {
       const newImage = new ImageModel({
         name: {
           data: req.file.filename,
-          contentType: "image/png/jpg",
+          contentType: "image/png",
         },
       });
       newImage
         .save()
-        .then(() => "successfully uploaded!")
+        .then(() => console.log("successfully uploaded!"))
         .catch((err) => console.log(err));
     }
   });

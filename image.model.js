@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
-const ImageSchema = mongoose.Schema({
+const ImageSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
   image: {
-    data: Buffer,
+    data: any,
     contentType: String,
   },
 });
 
-const ImageModel = mongoose.model("imageModel", ImageSchema);
+const ImageModel = model("ImageModel", ImageSchema);
 
 module.exports = ImageModel;
