@@ -9,6 +9,7 @@ const ImageModel = require("./image.model");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.multer());
 
 mongoose
   .connect(
@@ -37,19 +38,23 @@ app.post("/upload", (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       console.log(err);
+      return res.status(200).json({});
     } else {
+      console.log(req);
       const newImage = new ImageModel({
-        name: {
-          data: req.file.filename,
-          contentType: "image/png",
-        },
+        name: req.file.filename,
       });
       newImage
         .save()
-        .then(() => console.log("successfully uploaded!"))
+        .then(() => {
+          console.log("successfully uploaded!");
+          return res.status(200).json({});
+        })
         .catch((err) => console.log(err));
     }
+     return res.status(200).json({});
   });
+  return res.status(200).json({});
 });
 
 app.listen(port, () => {

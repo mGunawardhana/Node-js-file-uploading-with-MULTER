@@ -5,11 +5,7 @@ const ImageSchema = new Schema({
   name: {
     type: String,
     required: true,
-  },
-  image: {
-    data: any,
-    contentType: String,
-  },
+  }
 });
 
 const ImageModel = model("ImageModel", ImageSchema);
