@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose
   .connect(
-    "mongodb+srv://dini:dini1234@image.lkt8ym9.mongodb.net/image?retryWrites=true&w=majority",
+  //Enter you mongo url here
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Database connected!"))
